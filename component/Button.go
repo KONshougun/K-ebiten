@@ -1,7 +1,7 @@
 package component
 
 import (
-	guihandler "github.com/KONshougun/K-game/gui/guiHandler"
+	"github.com/KONshougun/K-ebiten/handlers"
 	"github.com/hajimehoshi/ebiten/v2"
 	"github.com/hajimehoshi/ebiten/v2/inpututil"
 )
@@ -28,7 +28,7 @@ type Button struct {
 	OnClick func()
 }
 
-func NewButton(states [CountBtnState]*ebiten.Image, label *Label, area guihandler.Area, f func()) *Button {
+func NewButton(states [CountBtnState]*ebiten.Image, label *Label, area handlers.Area, f func()) *Button {
 	b := &Button{
 		ComponentData: NewComponentData(area),
 		Label:         label,

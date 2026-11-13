@@ -3,7 +3,8 @@ package component
 import (
 	"image/color"
 
-	guihandler "github.com/KONshougun/K-game/gui/guiHandler"
+	"github.com/KONshougun/K-ebiten/handlers"
+
 	"github.com/hajimehoshi/ebiten/v2"
 	"github.com/hajimehoshi/ebiten/v2/text/v2"
 )
@@ -11,15 +12,15 @@ import (
 type Label struct {
 	*ComponentData
 
-	guihandler.Text
+	handlers.Text
 }
 
-func NewLabel(str string, c color.Color, size guihandler.TextSize, space guihandler.TextLineSpacing,
-	horizontalAlign, verticalAlign text.Align, area guihandler.Area) *Label {
+func NewLabel(str string, c color.Color, size handlers.TextSize, space handlers.TextLineSpacing,
+	horizontalAlign, verticalAlign text.Align, area handlers.Area) *Label {
 	return &Label{
 		ComponentData: NewComponentData(area),
 
-		Text: guihandler.NewText(str, c, size, space, horizontalAlign, verticalAlign),
+		Text: handlers.NewText(str, c, size, space, horizontalAlign, verticalAlign),
 	}
 }
 

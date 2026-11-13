@@ -4,19 +4,9 @@ import (
 	"image/color"
 	"math"
 
-	guihandler "github.com/KONshougun/K-game/gui/guiHandler"
-	"github.com/KONshougun/K-game/model/entity"
-	"github.com/KONshougun/K-game/model/stat"
+	"github.com/KONshougun/K-ebiten/handlers"
 	"github.com/hajimehoshi/ebiten/v2"
 	"github.com/hajimehoshi/ebiten/v2/vector"
-)
-
-type BarType byte
-
-const (
-	HealthBar BarType = iota
-	StaminaBar
-	ManaBar
 )
 
 type BorderOptions struct {
@@ -33,48 +23,16 @@ type ProgressBar struct {
 	Border          BorderOptions
 	BackgroundColor color.Color
 	//BarColor        []color.NRGBA
-	BarType
 }
 
-func NewProgressBar(t BarType, entityData *entity.EntityData, border BorderOptions, area guihandler.Area) *ProgressBar {
+func NewProgressBar(maxValue *float64, currValue map[*float64][]color.NRGBA, border BorderOptions, area handlers.Area) *ProgressBar {
 	p := &ProgressBar{
 		ComponentData:   NewComponentData(area),
 		BackgroundColor: color.Black,
-		BarType:         t,
 		Border:          border,
-		CurrValue:       make(map[*float64][]color.NRGBA, 1),
+		MaxValue:        maxValue,
+		CurrValue:       currValue,
 	}
-
-	switch t {
-	case HealthBar:
-		p.MaxValue = &entityData.MaxHp
-		p.CurrValue = make(map[*float64][]color.NRGBA, 2)
-		p.CurrValue[&entityData.Stats[stat.Hp]] = []color.NRGBA{
-			color.NRGBA{0, 200, 0, 255},
-			color.NRGBA{255, 255, 0, 255},
-			color.NRGBA{255, 0, 0, 255},
-		}
-		p.CurrValue[&entityData.Shield] = []color.NRGBA{
-			color.NRGBA{R: 245, G: 245, B: 245, A: 192},
-		}
-	case StaminaBar:
-		p.MaxValue = &entityData.MaxSt
-		p.CurrValue[&entityData.Stats[stat.St]] = []color.NRGBA{
-			color.NRGBA{255, 210, 50, 255},
-			color.NRGBA{255, 140, 0, 255},
-			color.NRGBA{255, 0, 0, 255},
-		}
-	case ManaBar:
-		p.MaxValue = &entityData.MaxMp
-		p.CurrValue[&entityData.Stats[stat.Mp]] = []color.NRGBA{
-			color.NRGBA{0, 200, 255, 255},
-			color.NRGBA{0, 0, 255, 255},
-			color.NRGBA{150, 0, 255, 255},
-		}
-	default:
-		panic("Daje")
-	}
-
 	return p
 }
 

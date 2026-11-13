@@ -1,14 +1,9 @@
 package component
 
 import (
-	guihandler "github.com/KONshougun/K-game/gui/guiHandler"
+	"github.com/KONshougun/K-ebiten/handlers"
 	"github.com/hajimehoshi/ebiten/v2"
 )
-
-/*type Controller interface {
-	Update()
-	Draw(screen *ebiten.Image)
-}*/
 
 type Component interface {
 	Update() error
@@ -19,10 +14,10 @@ type Component interface {
 
 type ComponentData struct {
 	Id uint8
-	guihandler.Area
+	handlers.Area
 }
 
-func NewComponentData( /*controller Controller,*/ area guihandler.Area) *ComponentData {
+func NewComponentData(area handlers.Area) *ComponentData {
 	return &ComponentData{
 		//Controller: controller,
 		Area: area,

@@ -4,7 +4,8 @@ import (
 	"image/color"
 	"strings"
 
-	guihandler "github.com/KONshougun/K-game/gui/guiHandler"
+	"github.com/KONshougun/K-ebiten/handlers"
+
 	"github.com/hajimehoshi/ebiten/v2"
 	"github.com/hajimehoshi/ebiten/v2/text/v2"
 )
@@ -12,15 +13,15 @@ import (
 type LogConsole struct {
 	*ComponentData
 	*Background
-	text guihandler.Text
+	text handlers.Text
 }
 
-func NewLogConsole(background *ebiten.Image, c color.Color, size guihandler.TextSize, space guihandler.TextLineSpacing,
-	horizontalAlign, verticalAlign text.Align, area guihandler.Area) *LogConsole {
+func NewLogConsole(background *ebiten.Image, c color.Color, size handlers.TextSize, space handlers.TextLineSpacing,
+	horizontalAlign, verticalAlign text.Align, area handlers.Area) *LogConsole {
 	l := &LogConsole{
 		ComponentData: NewComponentData(area),
 		Background:    NewBackground(background, area),
-		text:          guihandler.NewText("", c, size, space, horizontalAlign, verticalAlign),
+		text:          handlers.NewText("", c, size, space, horizontalAlign, verticalAlign),
 	}
 	return l
 }

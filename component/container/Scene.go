@@ -1,7 +1,7 @@
 package container
 
 import (
-	guihandler "github.com/KONshougun/K-game/gui/guiHandler"
+	"github.com/KONshougun/K-ebiten/handlers"
 	"github.com/hajimehoshi/ebiten/v2"
 )
 
@@ -27,7 +27,7 @@ func NewScene(img *ebiten.Image) *SceneData {
 		panic("oh coglio l'immagine va messa")
 	}
 	return &SceneData{
-		Panel: NewPanel(guihandler.Area{
+		Panel: NewPanel(handlers.Area{
 			X:      0,
 			Y:      0,
 			Width:  GameWidth,

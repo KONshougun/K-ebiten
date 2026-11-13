@@ -3,7 +3,6 @@ module github.com/KONshougun/K-ebiten
 go 1.27.3
 
 require (
-	github.com/KONshougun/K-game v0.0.0-20261113152515-ec46857cb4c1
 	github.com/hajimehoshi/ebiten/v2 v2.10.6
 )
 

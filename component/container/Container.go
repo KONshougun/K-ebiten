@@ -3,8 +3,9 @@ package container
 import (
 	"image/color"
 
-	"github.com/KONshougun/K-game/gui/component"
-	guihandler "github.com/KONshougun/K-game/gui/guiHandler"
+	"github.com/KONshougun/K-ebiten/component"
+	"github.com/KONshougun/K-ebiten/handlers"
+
 	"github.com/hajimehoshi/ebiten/v2"
 )
 
@@ -35,7 +36,7 @@ type ContainerData struct {
 	*Fade
 }
 
-func NewContainerData(area guihandler.Area, img *ebiten.Image) *ContainerData {
+func NewContainerData(area handlers.Area, img *ebiten.Image) *ContainerData {
 	return &ContainerData{
 		ComponentData: component.NewComponentData(area),
 		Background:    component.NewBackground(img, area),

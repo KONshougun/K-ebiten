@@ -3,8 +3,9 @@ package container
 import (
 	"fmt"
 
-	"github.com/KONshougun/K-game/gui/component"
-	guihandler "github.com/KONshougun/K-game/gui/guiHandler"
+	"github.com/KONshougun/K-ebiten/component"
+	"github.com/KONshougun/K-ebiten/handlers"
+
 	"github.com/hajimehoshi/ebiten/v2"
 )
 
@@ -15,7 +16,7 @@ type ButtonGroup struct {
 	MaxSelected int
 }
 
-func NewButtonGroup(area guihandler.Area, maxSelected int, btns ...*component.Button) *ButtonGroup {
+func NewButtonGroup(area handlers.Area, maxSelected int, btns ...*component.Button) *ButtonGroup {
 	bGroup := &ButtonGroup{
 		ContainerData: NewContainerData(area, nil),
 		MaxSelected:   maxSelected,
